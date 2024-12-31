@@ -4,14 +4,14 @@ import Navigation from "@/components/NavigationComponent.vue";
 </script>
 
 <template>
-  <Navigation />
-  <!--    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">About</RouterLink>-->
+  <section>
+    <Navigation />
+    <RouterLink to="/" />
+    <!--<RouterLink to="/about">About</RouterLink>-->
 
-  <RouterView />
+    <RouterView />
+  </section>
 </template>
 
 <style scoped>
-
-
 </style>

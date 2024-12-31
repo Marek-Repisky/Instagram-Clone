@@ -9,7 +9,7 @@ export default {
   data() {
     return {
       icons: [
-          'Domov', 'Search', 'Compass', 'Clapper',
+          'Home', 'Search', 'Compass', 'Clapper',
           'Direct', 'Heart', 'New Post', 'Account'
       ]
     }
@@ -18,16 +18,16 @@ export default {
 </script>
 
 <template>
-  <article class="nav">
+  <nav>
     <section class="links">
       <h1>Instagram</h1>
     </section>
     <article class="links">
-      <RouterLink to="#" class="navigation-link">
+      <RouterLink to="/" class="navigation-link">
         <NavigationLink  v-for="(icon, index) of icons" :key="index" :icon="icon" />
       </RouterLink>
     </article>
-  </article>
+  </nav>
   <div class="vl"></div>
 </template>
 
@@ -52,9 +52,8 @@ export default {
   .links {
     padding: 10px 15px;
   }
-  .nav {
-    min-width: 13rem;
-    min-width: 20.5rem;
+  nav {
+    width: 20.5rem;
     height: 100%;
     border-right: rgba(255, 255, 255, .15) solid 2px;
     position: fixed;
