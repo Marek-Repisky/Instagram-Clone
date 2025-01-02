@@ -9,8 +9,8 @@ export default {
   data() {
     return {
       icons: [
-          'Home', 'Search', 'Compass', 'Clapper',
-          'Direct', 'Heart', 'New Post', 'Account'
+          'Home', 'Search', 'Explore', 'Film reels',
+          'Messages', 'Likes', 'New Post', 'Account'
       ]
     }
   }
@@ -20,7 +20,9 @@ export default {
 <template>
   <nav>
     <section class="links">
-      <h1>Instagram</h1>
+      <RouterLink to="/">
+        <h1>Instagram</h1>
+      </RouterLink>
     </section>
     <article class="links">
       <RouterLink to="/" class="navigation-link">
@@ -53,9 +55,13 @@ export default {
     padding: 10px 15px;
   }
   nav {
-    width: 20.5rem;
     height: 100%;
     border-right: rgba(255, 255, 255, .15) solid 2px;
     position: fixed;
+  }
+  @media only screen and (max-width: 1550px) {
+    nav {
+      width: 5rem;
+    }
   }
 </style>

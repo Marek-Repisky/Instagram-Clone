@@ -28,6 +28,11 @@ export default {
     font-size: 1.5rem;
     margin: 0;
   }
+  @media only screen and (max-width: 1550px) {
+    p {
+      display: none;
+    }
+  }
   section {
     display: flex;
     gap: 15px;

@@ -21,11 +21,11 @@ export default {
     </section>
     <section>
       <section class="bottom-part-of-the-post-icons">
-        <img src="@/assets/icons/heart.png" alt="Heart" title="Heart"
+        <img src="../assets/icons/Likes.png" alt="Heart" title="Heart"
              class="like-and-stuff">
         <img src="@/assets/icons/Comment.png" alt="Comment" title="Comment"
              class="like-and-stuff">
-        <img src="@/assets/icons/Direct.png" alt="Share" title="Share"
+        <img src="../assets/icons/Messages.png" alt="Share" title="Share"
              class="like-and-stuff">
         <img src="@/assets/icons/Bookmark.png" alt="Bookmark" title="Bookmark"
              class="like-and-stuff bookmark">
@@ -72,6 +72,9 @@ export default {
     margin-top: 5px;
     width: 32px;
     height: 32px;
+  }
+  .like-and-stuff:hover {
+    opacity: .4;
   }
   .bookmark {
     margin-left: 225px;
