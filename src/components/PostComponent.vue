@@ -3,7 +3,31 @@ import CirclesComponent from "@/components/CirclesComponent.vue";
 
 export default {
   name: "PostComponent",
-  components: {CirclesComponent}
+  components: {CirclesComponent},
+  data() {
+    return {
+      bookmark: 'Bookmark',
+      heart: 'Likes',
+    };
+  },
+  methods: {
+    changeBookmark() {
+      if (this.bookmark === 'Bookmark') this.bookmark = 'Bookmarked'
+      else this.bookmark = 'Bookmark'
+    },
+    changeLike() {
+      if (this.heart === 'Likes') this.heart = 'Liked'
+      else this.heart = 'Likes'
+    },
+  },
+  computed: {
+    iconPath() {
+      return new URL(`../assets/icons/${this.bookmark}.png`, import.meta.url).href;
+    },
+    iconPath2() {
+      return new URL(`../assets/icons/${this.heart}.png`, import.meta.url).href;
+    }
+  }
 }
 </script>
 
@@ -15,21 +39,22 @@ export default {
       <p style="padding-top: 1rem">1t</p>
       <img src="@/assets/icons/options.png" alt="Options" title="Options" class="options">
     </section>
+
     <section>
-      <img src="../../public/images/PostImage1.jpg" alt="PostImage1" title="PostImage1"
+      <img src="/public/images/PostImage1.jpg" alt="PostImage1" title="PostImage1"
            class="post-Image">
     </section>
+
     <section>
       <section class="bottom-part-of-the-post-icons">
-        <img src="../assets/icons/Likes.png" alt="Heart" title="Heart"
-             class="like-and-stuff">
+        <img :src="iconPath2" :alt="heart" :title="heart" class="like-and-stuff" @click="changeLike">
         <img src="@/assets/icons/Comment.png" alt="Comment" title="Comment"
              class="like-and-stuff">
-        <img src="../assets/icons/Messages.png" alt="Share" title="Share"
+        <img src="@/assets/icons/Messages.png" alt="Share" title="Share"
              class="like-and-stuff">
-        <img src="@/assets/icons/Bookmark.png" alt="Bookmark" title="Bookmark"
-             class="like-and-stuff bookmark">
+        <img :src="iconPath" :alt="bookmark" :title="bookmark" class="like-and-stuff bookmark" @click="changeBookmark">
       </section>
+
       <p>16 likes</p>
       <p class="comment">
         <b>Person1</b>

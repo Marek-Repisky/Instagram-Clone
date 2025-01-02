@@ -9,8 +9,8 @@ export default {
   data() {
     return {
       icons: [
-          'Home', 'Search', 'Explore', 'Film reels',
-          'Messages', 'Likes', 'New Post', 'Account'
+          'Home', 'Search', 'Explore',
+          'Film reels', 'New Post'/*, 'Bookmark', 'Likes', 'Account'*/
       ]
     }
   }
@@ -20,17 +20,26 @@ export default {
 <template>
   <nav>
     <section class="links">
-      <RouterLink to="/">
+      <RouterLink to="/" class="navigation-link">
         <h1>Instagram</h1>
       </RouterLink>
     </section>
+
     <article class="links">
+      <RouterLink to="/" class="navigation-link" v-for="(icon, index) of icons" :key="index">
+        <NavigationLink :icon="icon" />
+      </RouterLink>
+      <RouterLink to="/bookmarks/" class="navigation-link">
+        <NavigationLink :icon="'Bookmark'" />
+      </RouterLink>
+      <RouterLink to="/likes/" class="navigation-link">
+        <NavigationLink :icon="'Likes'" />
+      </RouterLink>
       <RouterLink to="/" class="navigation-link">
-        <NavigationLink  v-for="(icon, index) of icons" :key="index" :icon="icon" />
+        <NavigationLink :icon="'Account'" />
       </RouterLink>
     </article>
   </nav>
-  <div class="vl"></div>
 </template>
 
 <style scoped>
@@ -49,7 +58,7 @@ export default {
   }
   .navigation-link {
     text-decoration: none;
-    padding: 15px 10px;
+    padding: 7px 10px;
   }
   .links {
     padding: 10px 15px;
