@@ -32,7 +32,7 @@ export default {
       <p style="font-size: 1rem; color: rgba(255, 255, 255, .55)">Suggested for you</p>
     </div>
     <div>
-      <button type="button">Sledovat</button>
+      <button type="button">Follow</button>
     </div>
   </section>
 </template>

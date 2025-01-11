@@ -4,6 +4,7 @@ import CirclesComponent from "@/components/CirclesComponent.vue";
 import PostComponent from "@/components/PostComponent.vue";
 import AccountComponent from "@/components/AccountComponent.vue";
 import data from "@/data.json";
+import { useLikeStore } from "@/stores/likes.js";
 
 export default {
   name: "HomeView",
@@ -14,8 +15,8 @@ export default {
   },
   data() {
     return {
-      post: data.posts,
-      accounts: data.accounts
+      posts: data.posts,
+      likeStore: useLikeStore()
     }
   }
 }
@@ -29,23 +30,12 @@ export default {
         <RouterLink to="/" class="top-part">For you</RouterLink>
         <RouterLink to="/" class="top-part">Followed</RouterLink>
       </section>
-
-      <section class="circles">
-        <RouterLink v-for="account in accounts" :key="account.id" style="text-decoration: none" :to="`/` + account.userName" >
-          <CirclesComponent :image="account.image" :off=0 />
-        </RouterLink>
-      </section>
-    {{ accounts }}
-      <PostComponent :post="post[0]" class="post"/>
-      <PostComponent :post="post[2]" class="post"/>
+<!--      <PostComponent class="post"/>-->
+<!--      <PostComponent class="post"/>-->
+<!--      <PostComponent class="post"/>-->
+      <PostComponent v-for="post in likeStore.likes" :key="post" :post="posts[post-1]" class="post"/>
     </article>
 
-    <section class="right-side">
-      <h2>Suggestions for you</h2>
-        <AccountComponent v-for="index in 5" :key="index" :image="`Person${index}`" :off=1 />
-      <p>Information • Help • Press releases• API • Work opportunities • Privacy • Terms • Localities • Language • Meta Verified</p>
-      <p class="bottom-text">© 2025 Instagram from Marek</p>
-    </section>
   </section>
 </template>
 
@@ -63,17 +53,6 @@ export default {
     font-weight: bold;
     font-size: 1.2rem;
   }
-  .circles {
-    display: flex;
-    gap: 10px;
-    text-decoration: none;
-    flex-wrap: wrap;
-  }
-  @media only screen and (max-width: 1080px) {
-    .circles {
-      flex-direction: column;
-    }
-  }
   .middle {
     display: flex;
     flex-direction: column;
@@ -86,15 +65,6 @@ export default {
     display: flex;
     justify-content: center;
   }
-  .right-side {
-    margin: 4rem 0 0 5rem;
-    max-width: 300px;
-  }
-  @media only screen and (max-width: 1460px) {
-    .right-side {
-      display: none;
-    }
-  }
   h2 {
     font-family: "Segoe UI", sans-serif;
     font-size: 1.2rem;
@@ -104,9 +74,6 @@ export default {
   p {
     margin-top: 3rem;
     color: rgba(255, 255, 255, .55);
-  }
-  .bottom-text {
-    margin-top: 1.5rem;
   }
 
 </style>

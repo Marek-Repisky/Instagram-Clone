@@ -3,9 +3,11 @@ import { RouterLink } from "vue-router";
 import CirclesComponent from "@/components/CirclesComponent.vue";
 import PostComponent from "@/components/PostComponent.vue";
 import AccountComponent from "@/components/AccountComponent.vue";
+import data from "@/data.json";
+import { useBookmarksStore } from "@/stores/bookmarks.js";
 
 export default {
-  name: "HomeView",
+  name: "LikeView",
   components: {
     AccountComponent,
     CirclesComponent,
@@ -13,6 +15,8 @@ export default {
   },
   data() {
     return {
+      posts: data.posts,
+      bookmarksStore: useBookmarksStore()
     }
   }
 }
@@ -26,9 +30,10 @@ export default {
         <RouterLink to="/" class="top-part">For you</RouterLink>
         <RouterLink to="/" class="top-part">Followed</RouterLink>
       </section>
-      <PostComponent class="post"/>
-      <PostComponent class="post"/>
-      <PostComponent class="post"/>
+<!--      <PostComponent class="post"/>-->
+<!--      <PostComponent class="post"/>-->
+<!--      <PostComponent class="post"/>-->
+      <PostComponent v-for="post in bookmarksStore.bookmarks" :key="post" :post="posts[post-1]" class="post"/>
     </article>
 
   </section>

@@ -9,9 +9,17 @@ import Navigation from "@/components/NavigationComponent.vue";
     <RouterLink to="/" />
     <!--<RouterLink to="/about">About</RouterLink>-->
 
-    <RouterView />
+    <div>
+      <RouterView />
+
+    </div>
   </section>
 </template>
 
 <style scoped>
+  div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 </style>

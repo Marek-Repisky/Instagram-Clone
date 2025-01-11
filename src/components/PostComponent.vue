@@ -1,23 +1,49 @@
 <script>
 import CirclesComponent from "@/components/CirclesComponent.vue";
+import { useBookmarksStore } from "@/stores/bookmarks.js";
+import { useLikeStore } from "@/stores/likes.js";
 
 export default {
   name: "PostComponent",
   components: {CirclesComponent},
+  props: {
+    post: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
-      bookmark: 'Bookmark',
-      heart: 'Likes',
+      bookmark: useBookmarksStore().bookmarks.includes(this.post.id)
+          ? 'Bookmarked' : 'Bookmark',
+      like: useLikeStore().likes.includes(this.post.id)
+          ? 'Liked' : 'Likes',
+      bookmarksStore: useBookmarksStore(),
+      likesStore: useLikeStore()
     };
   },
   methods: {
     changeBookmark() {
-      if (this.bookmark === 'Bookmark') this.bookmark = 'Bookmarked'
-      else this.bookmark = 'Bookmark'
+      if (this.bookmark === 'Bookmark') {
+        this.bookmark = 'Bookmarked'
+        this.bookmarksStore.addBookmark(this.post.id)
+      }
+      else {
+        this.bookmark = 'Bookmark'
+        this.bookmarksStore.removeBookmark(this.post.id)
+      }
     },
     changeLike() {
-      if (this.heart === 'Likes') this.heart = 'Liked'
-      else this.heart = 'Likes'
+      if (this.like === 'Likes') {
+        this.like = 'Liked'
+        this.likesStore.addLike(this.post.id)
+        this.post.likes++
+      }
+      else {
+        this.like = 'Likes'
+        this.likesStore.removeLike(this.post.id)
+        this.post.likes--
+      }
     },
   },
   computed: {
@@ -25,7 +51,7 @@ export default {
       return new URL(`../assets/icons/${this.bookmark}.png`, import.meta.url).href;
     },
     iconPath2() {
-      return new URL(`../assets/icons/${this.heart}.png`, import.meta.url).href;
+      return new URL(`../assets/icons/${this.like}.png`, import.meta.url).href;
     }
   }
 }
@@ -35,19 +61,19 @@ export default {
   <article>
     <section class="top-part-of-the-post">
       <CirclesComponent :off="1" image="Person1" />
-      <p style="padding-top: 1rem">Person1</p>
-      <p style="padding-top: 1rem">1t</p>
+      <p style="padding-top: 1rem">{{ post.accountName }}</p>
+      <p style="padding-top: 1rem">{{ post.passedTime }}</p>
       <img src="@/assets/icons/options.png" alt="Options" title="Options" class="options">
     </section>
 
     <section>
-      <img src="/public/images/PostImage1.jpg" alt="PostImage1" title="PostImage1"
+      <img :src="`/public/images/` + post.image" :alt="post.image" :title="post.image"
            class="post-Image">
     </section>
 
     <section>
       <section class="bottom-part-of-the-post-icons">
-        <img :src="iconPath2" :alt="heart" :title="heart" class="like-and-stuff" @click="changeLike">
+        <img :src="iconPath2" :alt="like" :title="like" class="like-and-stuff" @click="changeLike">
         <img src="@/assets/icons/Comment.png" alt="Comment" title="Comment"
              class="like-and-stuff">
         <img src="@/assets/icons/Messages.png" alt="Share" title="Share"
@@ -55,10 +81,10 @@ export default {
         <img :src="iconPath" :alt="bookmark" :title="bookmark" class="like-and-stuff bookmark" @click="changeBookmark">
       </section>
 
-      <p>16 likes</p>
+      <p>{{ post.likes }}</p>
       <p class="comment">
-        <b>Person1</b>
-          Lorem ipsum odor amet, consectetuer adipiscing elit. Adipiscing viverra penatibus blandit praesent; neque sed suscipit sem. Maximus faucibus etiam dapibus ac ante placerat. Finibus convallis interdum tellus metus purus iaculis. Egestas convallis facilisis dis aptent interdum ante viverra. Magna fringilla turpis facilisis sodales rhoncus. Finibus eu laoreet mus fames aptent tellus. Sed per hendrerit platea scelerisque sed velit vel. Primis lobortis fusce mauris fames etiam habitant.
+        <b>{{ post.accountName }}</b>
+          {{ post.description }}
       </p>
       <input type="text" placeholder="Add comment...">
     </section>

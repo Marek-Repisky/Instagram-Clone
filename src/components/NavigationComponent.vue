@@ -56,6 +56,11 @@ export default {
     margin: 0;
     padding-left: 13px;
   }
+  @media only screen and (max-width: 1550px) {
+    h1 {
+      display: none;
+    }
+  }
   .navigation-link {
     text-decoration: none;
     padding: 7px 10px;

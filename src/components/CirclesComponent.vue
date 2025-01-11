@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     imagePath() {
-      return new URL(`/public/images/${this.image}.jpg`, import.meta.url).href
+      return new URL(`/public/images/${this.image}.png`, import.meta.url).href
     }
   }
 }
