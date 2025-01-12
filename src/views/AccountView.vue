@@ -1,14 +1,29 @@
 <script>
-import { RouterLink } from "vue-router";
 import data from "@/data.json";
 
 export default {
   name: "AccountView",
   components: {
   },
+  props: {
+    username: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
-      posts: data.posts
+      account: null, // Initialize account to null
+      posts: [],
+    }
+  },
+  watch: {
+    username: {
+      immediate: true, // Run the watcher immediately on component creation
+      handler(newUsername) {
+        this.account = data.accounts.find(account => account.userName === newUsername);
+        this.posts = this.account ? data.posts.filter(post => post.accountId === this.account.id) : [];
+      }
     }
   }
 }
@@ -16,14 +31,18 @@ export default {
 
 <template>
   <section class="accountView">
+
     <section class="top">
       <div class="account-image">
-        <a href="#"><img src="/public/images/Person1.jpg" alt="Person" title="Person"></a>
+        <a href="#"><img :src="`/images/${this.account.image}`" :alt="account.image"
+                         :title="account.image"></a>
       </div>
 
       <section class="top-right">
         <div class="top-right-top">
-          <a href="#"><h2>natasatrombola</h2></a>
+          <a href="#">
+            <h2>{{ account.userName }}</h2>
+          </a>
           <button type="button" class="follow-button">Follow</button>
           <button type="button" class="plus-person-button">
             <img src="@/assets/icons/Add%20person.png" alt="Person" title="Person">
@@ -31,11 +50,11 @@ export default {
           <a href="#"><img src="@/assets/icons/options.png" alt="Options" title="Options" class="options"></a>
         </div>
         <div class="top-right-middle">
-          <p><span>1</span> post</p>
-          <a href="#"><p>Followers <span>43</span></p></a>
-          <a href="#"><p>Following <span>52</span></p></a>
+          <p><span>{{ this.posts.length }}</span> post</p>
+          <a href="#"><p>Followers <span>{{ account.followers }}</span></p></a>
+          <a href="#"><p>Following <span>{{ account.following }}</span></p></a>
         </div>
-        <p>Natasa Trombola</p>
+        <p>{{ account.fullName }}</p>
       </section>
     </section>
 
@@ -56,7 +75,8 @@ export default {
       </div>
 
       <article>
-        <img src="/public/images/PostImage1.jpg" alt="PostImage1" title="PostImage1">
+        <img v-for="post in posts" :key="post.id" :src="`/images/${post.image}`"
+             :alt="post.image" :title="post.image">
       </article>
 
       <footer>

@@ -2,8 +2,8 @@
 export default {
   name: "AccountComponent",
   props: {
-    image: {
-      type: String,
+    account: {
+      type: Object,
       required: true
     },
     off: {
@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     imagePath() {
-      return new URL(`/public/images/${this.image}.jpg`, import.meta.url).href
+      return new URL(`/public/images/${this.account.image}`, import.meta.url).href
     }
   }
 }
@@ -21,13 +21,14 @@ export default {
 
 <template>
   <section>
-    <RouterLink to="/">
-      <img :src="imagePath" alt="Person" title="Person">
+    <RouterLink :to="`/account/` + account.userName">
+      <img :src="imagePath" :alt="account.image" :title="account.image">
     </RouterLink>
-    <p v-if="!off">{{ image }}</p>
+
+    <p v-if="!off">{{ account.userName }}</p>
     <div class="middle">
-      <RouterLink to="/" style="text-decoration: none">
-        <p>Username</p>
+      <RouterLink :to="`/account/` + account.userName" style="text-decoration: none">
+        <p>{{ account.userName }}</p>
       </RouterLink>
       <p style="font-size: 1rem; color: rgba(255, 255, 255, .55)">Suggested for you</p>
     </div>

@@ -2,8 +2,8 @@
 export default {
   name: "CirclesComponent",
   props: {
-    image: {
-      type: String,
+    account: {
+      type: Object,
       required: true
     },
     off: {
@@ -13,7 +13,7 @@ export default {
   },
   computed: {
     imagePath() {
-      return new URL(`/public/images/${this.image}.png`, import.meta.url).href
+      return new URL(`/public/images/${this.account.image}`, import.meta.url).href
     }
   }
 }
@@ -21,8 +21,10 @@ export default {
 
 <template>
   <section>
-    <img :src="imagePath" alt="Person" title="Person">
-    <p v-if="!off">{{ image }}</p>
+    <RouterLink style="text-decoration: none" :to="`/account/` + account.userName">
+      <img :src="imagePath" :alt="account.image" :title="account.image">
+      <p v-if="!off">{{ account.userName }}</p>
+    </RouterLink>
   </section>
 </template>
 
@@ -36,7 +38,8 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 0;
-    align-items: center;
+    align-items: baseline;
+    justify-content: center;
     padding-top: 1rem;
   }
   img {

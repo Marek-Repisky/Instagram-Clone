@@ -19,22 +19,20 @@ const router = createRouter({
     },
     {
       path: '/likes/',
-      name: '/likes/',
+      name: 'likes',
       component: LikesView,
     },
     {
-      path: '/account/',
-      name: '/account/',
+      path: '/account/:username',
+      name: 'account',
       component: AccountView,
+      props: true
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
-    },
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import('../views/NotFoundView.vue'),
+    }
   ],
 })
 

@@ -10,7 +10,7 @@ export default {
     return {
       icons: [
           'Home', 'Search', 'Explore',
-          'Film reels', 'New Post'/*, 'Bookmark', 'Likes', 'Account'*/
+          'Film reels', 'New Post'
       ]
     }
   }
@@ -35,7 +35,7 @@ export default {
       <RouterLink to="/likes/" class="navigation-link">
         <NavigationLink :icon="'Likes'" />
       </RouterLink>
-      <RouterLink to="/" class="navigation-link">
+      <RouterLink to="/account/myAccount">
         <NavigationLink :icon="'Account'" />
       </RouterLink>
     </article>

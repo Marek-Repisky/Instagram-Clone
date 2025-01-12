@@ -2,7 +2,7 @@
   "posts": [
     {
       "id": 1,
-      "accountName": "user123",
+      "accountId": 1,
       "passedTime": "1w",
       "image": "PostImage1.jpg",
       "description": "Enjoying a beautiful sunset!",
@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "accountName": "natureLover",
+      "accountId": 2,
       "passedTime": "2d",
       "image": "PostImage2.jpg",
       "description": "Exploring the great outdoors.",
@@ -18,11 +18,91 @@
     },
     {
       "id": 3,
-      "accountName": "foodieGal",
+      "accountId": 3,
       "passedTime": "3h",
       "image": "PostImage3.jpg",
       "description": "Tried a new recipe today!",
       "likes": 45
+    },
+    {
+      "id": 4,
+      "accountId": 2,
+      "passedTime": "1d",
+      "image": "PostImage4.jpg",
+      "description": "Morning coffee with a view ☕️",
+      "likes": 98
+    },
+    {
+      "id": 5,
+      "accountId": 1,
+      "passedTime": "5h",
+      "image": "PostImage5.jpg",
+      "description": "Just finished a great workout! 💪",
+      "likes": 67
+    },
+    {
+      "id": 6,
+      "accountId": 3,
+      "passedTime": "2w",
+      "image": "PostImage6.jpg",
+      "description": "Throwback to an amazing vacation! 🌴",
+      "likes": 154
+    },
+    {
+      "id": 7,
+      "accountId": 4,
+      "passedTime": "4d",
+      "image": "PostImage7.jpg",
+      "description": "Weekend vibes with friends! 🎉",
+      "likes": 112
+    },
+    {
+      "id": 8,
+      "accountId": 5,
+      "passedTime": "6h",
+      "image": "PostImage8.jpg",
+      "description": "Reading a good book in the park 📚",
+      "likes": 32
+    },
+    {
+      "id": 9,
+      "accountId": 6,
+      "passedTime": "3w",
+      "image": "PostImage9.jpg",
+      "description": "My furry friend being adorable! 🐶",
+      "likes": 201
+    },
+    {
+      "id": 10,
+      "accountId": 7,
+      "passedTime": "1h",
+      "image": "PostImage10.jpg",
+      "description": "Delicious homemade pizza for dinner! 🍕",
+      "likes": 78
+    },
+    {
+      "id": 11,
+      "accountId": 4,
+      "passedTime": "8h",
+      "image": "PostImage11.jpg",
+      "description": "Beautiful flowers in bloom! 🌸",
+      "likes": 55
+    },
+    {
+      "id": 12,
+      "accountId": 2,
+      "passedTime": "5d",
+      "image": "PostImage12.jpg",
+      "description": "Another day, another adventure! ⛰️",
+      "likes": 91
+    },
+    {
+      "id": 13,
+      "accountId": 5,
+      "passedTime": "2h",
+      "image": "PostImage13.jpg",
+      "description": "Trying out a new art project! 🎨",
+      "likes": 49
     }
   ],
   "accounts": [
@@ -30,7 +110,7 @@
       "id": 1,
       "userName": "user123",
       "fullName": "John Doe",
-      "posts": 1,
+      "posts": 2,
       "followers": 250,
       "following": 120,
       "image": "Person1.jpg"
@@ -39,7 +119,7 @@
       "id": 2,
       "userName": "user456",
       "fullName": "Jane Smith",
-      "posts": 1,
+      "posts": 3,
       "followers": 300,
       "following": 150,
       "image": "Person2.jpg"
@@ -48,10 +128,55 @@
       "id": 3,
       "userName": "user789",
       "fullName": "Alex Johnson",
-      "posts": 1,
+      "posts": 2,
       "followers": 400,
       "following": 200,
       "image": "Person3.jpg"
+    },
+    {
+      "id": 4,
+      "userName": "myAccount",
+      "fullName": "Adam Bielik",
+      "posts": 2,
+      "followers": 999999,
+      "following": 0,
+      "image": "Person8.jpg"
+    },
+    {
+      "id": 5,
+      "userName": "natureLover",
+      "fullName": "Emily Davis",
+      "posts": 2,
+      "followers": 542,
+      "following": 321,
+      "image": "Person4.jpg"
+    },
+    {
+      "id": 6,
+      "userName": "foodieAdventures",
+      "fullName": "Chris Wilson",
+      "posts": 1,
+      "followers": 876,
+      "following": 453,
+      "image": "Person5.jpg"
+    },
+    {
+      "id": 7,
+      "userName": "travelBug",
+      "fullName": "Sophia Martinez",
+      "posts": 1,
+      "followers": 1234,
+      "following": 678,
+      "image": "Person6.jpg"
+    },
+    {
+      "id": 8,
+      "userName": "artisticSoul",
+      "fullName": "Daniel Lee",
+      "posts": 2,
+      "followers": 389,
+      "following": 198,
+      "image": "Person7.jpg"
     }
   ]
 }

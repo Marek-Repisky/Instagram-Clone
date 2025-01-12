@@ -1,5 +1,4 @@
 <script>
-import { RouterLink } from "vue-router";
 import CirclesComponent from "@/components/CirclesComponent.vue";
 import PostComponent from "@/components/PostComponent.vue";
 import AccountComponent from "@/components/AccountComponent.vue";

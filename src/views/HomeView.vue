@@ -1,5 +1,4 @@
 <script>
-import { RouterLink } from "vue-router";
 import CirclesComponent from "@/components/CirclesComponent.vue";
 import PostComponent from "@/components/PostComponent.vue";
 import AccountComponent from "@/components/AccountComponent.vue";
@@ -14,7 +13,7 @@ export default {
   },
   data() {
     return {
-      post: data.posts,
+      posts: data.posts,
       accounts: data.accounts
     }
   }
@@ -31,19 +30,16 @@ export default {
       </section>
 
       <section class="circles">
-        <RouterLink v-for="account in accounts" :key="account.id" style="text-decoration: none" :to="`/` + account.userName" >
-          <CirclesComponent :image="account.image" :off=0 />
-        </RouterLink>
+        <CirclesComponent v-for="account in accounts.slice(0, 4)" :key="account.id" :account="account" :off=0 />
       </section>
-    {{ accounts }}
-      <PostComponent :post="post[0]" class="post"/>
-      <PostComponent :post="post[2]" class="post"/>
+      <PostComponent v-for="post in posts" :key="post.id" :post="post" class="post"/>
     </article>
 
     <section class="right-side">
       <h2>Suggestions for you</h2>
-        <AccountComponent v-for="index in 5" :key="index" :image="`Person${index}`" :off=1 />
-      <p>Information • Help • Press releases• API • Work opportunities • Privacy • Terms • Localities • Language • Meta Verified</p>
+      <AccountComponent v-for="account in accounts.slice(4, 8)" :key="account.id" :account="account" :off=1 />
+      <p>Information • Help • Press releases• API • Work opportunities • Privacy • Terms
+        • Localities • Language • Meta Verified</p>
       <p class="bottom-text">© 2025 Instagram from Marek</p>
     </section>
   </section>
@@ -65,7 +61,7 @@ export default {
   }
   .circles {
     display: flex;
-    gap: 10px;
+    gap: 20px;
     text-decoration: none;
     flex-wrap: wrap;
   }

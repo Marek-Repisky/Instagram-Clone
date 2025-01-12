@@ -2,6 +2,7 @@
 import CirclesComponent from "@/components/CirclesComponent.vue";
 import { useBookmarksStore } from "@/stores/bookmarks.js";
 import { useLikeStore } from "@/stores/likes.js";
+import data from "@/data.json";
 
 export default {
   name: "PostComponent",
@@ -19,7 +20,8 @@ export default {
       like: useLikeStore().likes.includes(this.post.id)
           ? 'Liked' : 'Likes',
       bookmarksStore: useBookmarksStore(),
-      likesStore: useLikeStore()
+      likesStore: useLikeStore(),
+      accounts: data.accounts
     };
   },
   methods: {
@@ -45,6 +47,9 @@ export default {
         this.post.likes--
       }
     },
+    findAccountById(accountId) {
+      return this.accounts.find(account => account.id === accountId);
+    }
   },
   computed: {
     iconPath() {
@@ -60,14 +65,19 @@ export default {
 <template>
   <article>
     <section class="top-part-of-the-post">
-      <CirclesComponent :off="1" image="Person1" />
-      <p style="padding-top: 1rem">{{ post.accountName }}</p>
+      <CirclesComponent :off="1" :account="findAccountById(post.accountId)" />
+      <RouterLink :to="`/account/` + findAccountById(post.accountId).userName"
+        style="text-decoration: none">
+        <p style="padding-top: 1rem">{{ findAccountById(post.accountId).userName }}</p>
+      </RouterLink>
       <p style="padding-top: 1rem">{{ post.passedTime }}</p>
-      <img src="@/assets/icons/options.png" alt="Options" title="Options" class="options">
+      <a href="#">
+        <img src="@/assets/icons/options.png" alt="Options" title="Options" class="options">
+      </a>
     </section>
 
     <section>
-      <img :src="`/public/images/` + post.image" :alt="post.image" :title="post.image"
+      <img :src="`/images/` + post.image" :alt="post.image" :title="post.image"
            class="post-Image">
     </section>
 
@@ -78,7 +88,8 @@ export default {
              class="like-and-stuff">
         <img src="@/assets/icons/Messages.png" alt="Share" title="Share"
              class="like-and-stuff">
-        <img :src="iconPath" :alt="bookmark" :title="bookmark" class="like-and-stuff bookmark" @click="changeBookmark">
+        <img :src="iconPath" :alt="bookmark" :title="bookmark" class="like-and-stuff bookmark"
+             @click="changeBookmark">
       </section>
 
       <p>{{ post.likes }}</p>
