@@ -15,6 +15,7 @@ export default {
   data() {
     return {
       posts: data.posts,
+      accounts: data.accounts,
       likeStore: useLikeStore()
     }
   }
@@ -29,11 +30,19 @@ export default {
         <RouterLink to="/" class="top-part">For you</RouterLink>
         <RouterLink to="/" class="top-part">Followed</RouterLink>
       </section>
-<!--      <PostComponent class="post"/>-->
-<!--      <PostComponent class="post"/>-->
-<!--      <PostComponent class="post"/>-->
+
+      <section class="circles">
+        <CirclesComponent v-for="account in accounts.slice(0, 4)" :key="account.id" :account="account" :off=0 />
+      </section>
       <PostComponent v-for="post in likeStore.likes" :key="post" :post="posts[post-1]" class="post"/>
     </article>
+    <section class="right-side">
+      <h2>Suggestions for you</h2>
+      <AccountComponent v-for="account in accounts.slice(4, 8)" :key="account.id" :account="account" :off=1 />
+      <p>Information • Help • Press releases• API • Work opportunities • Privacy • Terms
+        • Localities • Language • Meta Verified</p>
+      <p class="bottom-text">© 2025 Instagram from Marek</p>
+    </section>
 
   </section>
 </template>
@@ -52,6 +61,17 @@ export default {
     font-weight: bold;
     font-size: 1.2rem;
   }
+  .circles {
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+    flex-wrap: wrap;
+  }
+  @media only screen and (max-width: 1080px) {
+    .circles {
+      flex-direction: column;
+    }
+  }
   .middle {
     display: flex;
     flex-direction: column;
@@ -59,6 +79,15 @@ export default {
   }
   .post {
     max-width: 100%;
+  }
+  .right-side {
+    margin: 4rem 0 0 5rem;
+    max-width: 300px;
+  }
+  @media only screen and (max-width: 1460px) {
+    .right-side {
+      display: none;
+    }
   }
   .home {
     display: flex;

@@ -17,7 +17,7 @@ export default {
 
 <template>
   <section class="navigation-link">
-    <img :src="iconPath" :alt="icon" title="icon">
+    <img :src="iconPath" :alt="icon" :title="icon">
     <p>{{ icon }}</p>
   </section>
 </template>
