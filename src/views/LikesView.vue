@@ -66,11 +66,7 @@ export default {
     gap: 20px;
     text-decoration: none;
     flex-wrap: wrap;
-  }
-  @media only screen and (max-width: 1080px) {
-    .circles {
-      flex-direction: column;
-    }
+    max-width: 420px;
   }
   .middle {
     display: flex;
@@ -84,7 +80,12 @@ export default {
     margin: 4rem 0 0 5rem;
     max-width: 300px;
   }
-  @media only screen and (max-width: 1460px) {
+  @media only screen and (max-width: 1090px) {
+    .right-side {
+      margin-left: 1rem;
+    }
+  }
+  @media only screen and (max-width: 1010px) {
     .right-side {
       display: none;
     }

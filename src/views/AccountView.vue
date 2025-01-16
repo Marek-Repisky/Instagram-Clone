@@ -13,13 +13,13 @@ export default {
   },
   data() {
     return {
-      account: null, // Initialize account to null
+      account: null,
       posts: [],
     }
   },
   watch: {
     username: {
-      immediate: true, // Run the watcher immediately on component creation
+      immediate: true,
       handler(newUsername) {
         this.account = data.accounts.find(account => account.userName === newUsername);
         this.posts = this.account ? data.posts.filter(post => post.accountId === this.account.id) : [];

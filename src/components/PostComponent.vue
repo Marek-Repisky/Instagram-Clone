@@ -2,6 +2,7 @@
 import CirclesComponent from "@/components/CirclesComponent.vue";
 import { useBookmarksStore } from "@/stores/bookmarks.js";
 import { useLikeStore } from "@/stores/likes.js";
+import { useCommentsStore } from "@/stores/comments.js";
 import data from "@/data.json";
 
 export default {
@@ -21,7 +22,10 @@ export default {
           ? 'Liked' : 'Likes',
       bookmarksStore: useBookmarksStore(),
       likesStore: useLikeStore(),
-      accounts: data.accounts
+      commentsStore: useCommentsStore(),
+      commentText: "",
+      accounts: data.accounts,
+      showComments: false
     };
   },
   methods: {
@@ -49,9 +53,19 @@ export default {
     },
     findAccountById(accountId) {
       return this.accounts.find(account => account.id === accountId);
+    },
+    submitComment() {
+      if (this.commentText.trim()) {
+        this.commentsStore.addComment(this.post.id, this.commentText.trim());
+        this.commentText = "";
+        this.showComments = true;
+      }
     }
   },
   computed: {
+    comments() {
+      return this.commentsStore.getComments(this.post.id);
+    },
     iconPath() {
       return new URL(`../assets/icons/${this.bookmark}.png`, import.meta.url).href;
     },
@@ -81,11 +95,11 @@ export default {
            class="post-Image">
     </section>
 
-    <section>
+    <section class="bottom-part-of-the-post">
       <section class="bottom-part-of-the-post-icons">
         <img :src="iconPath2" :alt="like" :title="like" class="like-and-stuff" @click="changeLike">
         <img src="@/assets/icons/Comment.png" alt="Comment" title="Comment"
-             class="like-and-stuff">
+             class="like-and-stuff" @click="showComments=!showComments">
         <img src="@/assets/icons/Messages.png" alt="Share" title="Share"
              class="like-and-stuff">
         <img :src="iconPath" :alt="bookmark" :title="bookmark" class="like-and-stuff bookmark"
@@ -93,11 +107,23 @@ export default {
       </section>
 
       <p>{{ post.likes }}</p>
-      <p class="comment">
+      <p class="desc">
         <b>{{ post.accountName }}</b>
           {{ post.description }}
       </p>
-      <input type="text" placeholder="Add comment...">
+      <input
+          type="text"
+          v-model="commentText"
+          placeholder="Add comment..."
+          @keydown.enter="submitComment"
+      >
+
+      <section v-show="showComments" class="comments">
+        <article class="comment" v-for="(comment, index) in comments" :key="index">
+          <CirclesComponent :off="1" :account="findAccountById(4)" />
+          <p> {{ comment }} </p>
+        </article>
+      </section>
     </section>
   </article>
 </template>
@@ -141,7 +167,7 @@ export default {
   .bookmark {
     margin-left: 225px;
   }
-  .comment {
+  .desc {
     font-family: Arial, sans-serif;
     font-size: 1.05rem;
     line-height: 1.2rem;
@@ -161,8 +187,15 @@ export default {
     letter-spacing: 1px;
     outline: none;
   }
-  article {
+  .bottom-part-of-the-post {
     padding-bottom: 10px;
     border-bottom: rgba(255, 255, 255, .15) solid 2px;
+  }
+  .comment {
+    display: flex;
+    gap: 1rem;
+  }
+  .comment p {
+    padding-top: 5px;
   }
 </style>

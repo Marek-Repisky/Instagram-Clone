@@ -28,7 +28,7 @@ export default {
     font-size: 1.5rem;
     margin: 0;
   }
-  @media only screen and (max-width: 1550px) {
+  @media only screen and (max-width: 1335px) {
     p {
       display: none;
     }

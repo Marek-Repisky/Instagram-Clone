@@ -62,15 +62,11 @@ export default {
     font-size: 1.2rem;
   }
   .circles {
-     display: flex;
-     gap: 20px;
-     text-decoration: none;
-     flex-wrap: wrap;
-   }
-  @media only screen and (max-width: 1080px) {
-    .circles {
-      flex-direction: column;
-    }
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+    flex-wrap: wrap;
+    max-width: 420px;
   }
   .middle {
     display: flex;
@@ -88,7 +84,16 @@ export default {
     margin: 4rem 0 0 5rem;
     max-width: 300px;
   }
-  @media only screen and (max-width: 1460px) {
+  .right-side {
+    margin: 4rem 0 0 5rem;
+    max-width: 300px;
+  }
+  @media only screen and (max-width: 1090px) {
+    .right-side {
+      margin-left: 1rem;
+    }
+  }
+  @media only screen and (max-width: 1030px) {
     .right-side {
       display: none;
     }

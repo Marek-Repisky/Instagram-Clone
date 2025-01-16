@@ -110,7 +110,6 @@
       "id": 1,
       "userName": "user123",
       "fullName": "John Doe",
-      "posts": 2,
       "followers": 250,
       "following": 120,
       "image": "Person1.jpg"
@@ -119,7 +118,6 @@
       "id": 2,
       "userName": "user456",
       "fullName": "Jane Smith",
-      "posts": 3,
       "followers": 300,
       "following": 150,
       "image": "Person2.jpg"
@@ -128,7 +126,6 @@
       "id": 3,
       "userName": "user789",
       "fullName": "Alex Johnson",
-      "posts": 2,
       "followers": 400,
       "following": 200,
       "image": "Person3.jpg"
@@ -137,7 +134,6 @@
       "id": 4,
       "userName": "myAccount",
       "fullName": "Adam Bielik",
-      "posts": 2,
       "followers": 999999,
       "following": 0,
       "image": "Person8.jpg"
@@ -146,7 +142,6 @@
       "id": 5,
       "userName": "natureLover",
       "fullName": "Emily Davis",
-      "posts": 2,
       "followers": 542,
       "following": 321,
       "image": "Person4.jpg"
@@ -155,7 +150,6 @@
       "id": 6,
       "userName": "foodieAdventures",
       "fullName": "Chris Wilson",
-      "posts": 1,
       "followers": 876,
       "following": 453,
       "image": "Person5.jpg"
@@ -164,7 +158,6 @@
       "id": 7,
       "userName": "travelBug",
       "fullName": "Sophia Martinez",
-      "posts": 1,
       "followers": 1234,
       "following": 678,
       "image": "Person6.jpg"
@@ -173,7 +166,6 @@
       "id": 8,
       "userName": "artisticSoul",
       "fullName": "Daniel Lee",
-      "posts": 2,
       "followers": 389,
       "following": 198,
       "image": "Person7.jpg"

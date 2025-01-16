@@ -35,7 +35,7 @@ export default {
       <RouterLink to="/likes/" class="navigation-link">
         <NavigationLink :icon="'Likes'" />
       </RouterLink>
-      <RouterLink to="/account/myAccount">
+      <RouterLink to="/account/myAccount" class="navigation-link">
         <NavigationLink :icon="'Account'" />
       </RouterLink>
     </article>
@@ -56,7 +56,7 @@ export default {
     margin: 0;
     padding-left: 13px;
   }
-  @media only screen and (max-width: 1550px) {
+  @media only screen and (max-width: 1335px) {
     h1 {
       display: none;
     }
@@ -73,7 +73,7 @@ export default {
     border-right: rgba(255, 255, 255, .15) solid 2px;
     position: fixed;
   }
-  @media only screen and (max-width: 1550px) {
+  @media only screen and (max-width: 1335px) {
     nav {
       width: 5rem;
     }
