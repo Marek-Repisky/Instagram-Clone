@@ -45,7 +45,7 @@ export default {
 <style scoped>
   @font-face {
     font-family: 'Geraldine';
-    src: url('@/assets/fonts/Geraldine.ttf') format('truetype');
+    src: url('@/assets/fonts/Geraldine.woff2') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
