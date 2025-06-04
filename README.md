@@ -1,4 +1,4 @@
-# Vue Instagram Clone
+# Instagram Clone
 
 A modern Instagram clone built with Vue.js 3, featuring a responsive design, interactive posts, and social media functionality.
 
