@@ -1,6 +1,6 @@
 # Instagram Clone
 
-A modern Instagram clone built with Vue.js 3, featuring a responsive design, interactive posts, and social media functionality.
+A modern Instagram clone built with Vue.js 3, featuring a responsive design, interactive posts, and social media functionality. [Link](https://portfolio-instaclone.netlify.app). 
 <p align="center">
   <img src="https://github.com/Marek-Repisky/Instagram-Clone/blob/main/Instagram clone home page.png" alt="Instagram clone home page">
   <br />
