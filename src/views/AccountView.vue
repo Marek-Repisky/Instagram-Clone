@@ -1,5 +1,7 @@
 <script>
 import data from "@/data.json";
+import addPersonIcon from "@/assets/icons/Add person.png";
+import optionsIcon from "@/assets/icons/options.png";
 
 export default {
   name: "AccountView",
@@ -45,9 +47,9 @@ export default {
           </a>
           <button type="button" class="follow-button">Follow</button>
           <button type="button" class="plus-person-button">
-            <img src="@/assets/icons/Add%20person.png" alt="Person" title="Person">
+            <img :src="addPersonIcon" alt="Person" title="Person">
           </button>
-          <a href="#"><img src="@/assets/icons/options.png" alt="Options" title="Options" class="options"></a>
+          <a href="#"><img :src="optionsIcon" alt="Options" title="Options" class="options"></a>
         </div>
         <div class="top-right-middle">
           <p><span>{{ this.posts.length }}</span> post</p>
